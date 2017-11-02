@@ -1,19 +1,19 @@
 #!/bin/bash
 
 if [ $1 = 'create' ]
-then cmd="sudo docker create --name db -p 3306:3306 -v /dev-data:/var/lib/mysql  --env-file ./secrets.env mariadb"
+then cmd="docker create --name db -p 3306:3306 -v /dev-data:/var/lib/mysql  --env-file ./secrets.env mariadb"
 
 elif [ $1 = 'start' ]
-then cmd="sudo docker start db"
+then cmd="docker start db"
 
 elif [ $1 = 'status' ]
-then cmd="sudo docker ps -f name=db"
+then cmd="docker ps -f name=db"
 
 elif [ $1 = 'stop' ]
-then cmd="sudo docker stop db"
+then cmd="docker stop db"
 
 elif [ $1 = 'delete' ]
-then cmd="sudo docker rm db"
+then cmd="docker rm db"
 
 elif [ $1 = 'delete-data' ]
 then cmd="sudo rm -rf /dev-data"

@@ -1,20 +1,32 @@
 #!/bin/bash
 
-if [ $1 = 'docker-clean' ]
-then cmd="sudo docker container prune -f && sudo docker image prune -f"
-
-elif [ $1 = 'gen-secrets' ]
-then cmd="./gen-secrets"
+if [ $1 = 'gen-secrets' ]
+then cmd="sh gen-secrets ${2}"
 
 elif [ $1 = 'install' ]
-then cmd="cd server && sh run install && cd ../client && yarn install"
+then cmd="cd mariadb && sh run create && cd ../server && sh run install && cd ../client && yarn install"
+
+elif [ $1 = 'docker-clean' ]
+then cmd="sudo docker container prune -f && sudo docker image prune -f"
+
+elif [ $1 = 'compose-up' ]
+then cmd="sh compose"
+
+elif [ $1 = 'compose-down' ]
+then cmd="docker-compose down -v"
+
+elif [ $1 = 'compose-delete-data' ]
+then cmd="sudo rm -rf /data"
 
 elif [ $1 = 'help' ]
 then
   echo Commands:
-  echo docker-clean: clean the unused docker containers and images
   echo gen-secrets: generate development or production secrets
-  echo install: initialise the project
+  echo install: create the database and initialise the projects
+  echo docker-clean: remove the unused docker containers and images
+  echo compose-up: build all projects in production mode and start them using docker-compose
+  echo compose-down: stop and destroy all production servers using docker-compose without deleting database data
+  echo compose-delete-data: delete the production database data
   exit
 
 else

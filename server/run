@@ -19,13 +19,13 @@ elif [ $1 = 'publish' ]
 then cmd="cd server && env ASPNETCORE_ENVIRONMENT=Production dotnet publish -c Release -o ./app"
 
 elif [ $1 = 'docker-test' ]
-then cmd="sudo docker build -t server-test -f ./Dockerfile.Testing . && sudo docker run -t server-test"
+then cmd="docker build -t server-test -f ./Dockerfile.Testing . && docker run --name server-test -t server-test && docker rm server-test"
 
 elif [ $1 = 'docker-publish' ]
-then cmd="sudo docker build -t server -f ./Dockerfile.Production . && sudo docker run --name server -p 5000:5000 -t server"
+then cmd="docker build -t server -f ./Dockerfile.Production . && docker run -d --name server -p 5000:5000 -t server"
 
 elif [ $1 = 'docker-stop' ]
-then cmd="sudo docker stop server"
+then cmd="docker stop server && docker rm server"
 
 elif [ $1 = 'help' ]
 then

@@ -12,6 +12,4 @@ RUN dotnet restore ./server.tests
 
 COPY . /source
 
-RUN ls /source/server
-
 ENTRYPOINT ["sh", "run", "test"]

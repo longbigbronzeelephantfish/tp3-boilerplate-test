@@ -1,4 +1,4 @@
-version: '3.4'
+version: '3.3'
 
 services:
   mariadb:
@@ -7,10 +7,6 @@ services:
       - ./mariadb/secrets.env
     expose:
       - 3306
-    volumes:
-      - type: bind
-        source: /data
-        target: /var/lib/mysql 
   server:
     build:
       context: ./server
@@ -19,8 +15,6 @@ services:
       - mariadb
     depends_on:
       - mariadb
-    expose:
-      - 5000
   client:
     build:
       context: ./client
@@ -43,5 +37,6 @@ services:
     ports:
       - 80:80
 
+  
 volumes:
   shared:

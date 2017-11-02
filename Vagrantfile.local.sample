@@ -1,1 +1,7 @@
-# SAMPLE
+# Make a copy of this file and name it Vagrantfile.local
+# Overwrite any setting in this file
+
+config.vm.provider "virtualbox" do |v|
+  v.cpus = 4
+  v.memory = 8192
+end

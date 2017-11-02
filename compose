@@ -1,0 +1,36 @@
+#!/bin/bash
+
+echo Building Docker images...
+docker-compose build
+echo Docker images built!
+echo
+
+echo Starting database server...
+docker-compose up -d mariadb
+echo Database server started!
+echo
+
+let count=1
+cmd="docker-compose logs mariadb | grep 'ready for connections'"
+res=$( eval $cmd )
+while [ -z "$res" ]
+do
+  echo Waiting for database to be ready... $count
+  res=$( eval $cmd )
+  sleep 1
+  let count+=1
+  if [ $count -gt 30 ]
+  then
+    echo
+    echo Failed to connect to database!
+    exit
+  fi
+done
+
+echo Database ready!
+echo
+
+echo Starting the other servers...
+sleep 3
+docker-compose up -d
+echo Servers all started!
