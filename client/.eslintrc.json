@@ -1,0 +1,24 @@
+{
+  "extends": "airbnb",
+  "env": {
+    "browser": true,
+    "jest": true
+  },
+  "parser": "babel-eslint",
+  "rules": {
+    "strict": 0,
+    "import/extensions": ["error", "never"],
+    "react/prop-types": "off",
+    "no-unused-vars": ["error", { "argsIgnorePattern": "^_"}],
+    "class-methods-use-this": "off",
+    "eqeqeq": "off",
+    "no-console": "off"
+  },
+  "settings": {
+    "import/resolver": {
+      "webpack": {
+        "config": "webpack.dev.js"
+      }
+    }
+  }
+}

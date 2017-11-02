@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NotesPage tests The NotesPage renders without any error 1`] = `
+<div>
+  <h1
+    className="ui header"
+  >
+    Hello
+  </h1>
+  <p>
+    The time now is: 
+    Hello
+    .
+  </p>
+</div>
+`;

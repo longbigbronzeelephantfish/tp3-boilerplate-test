@@ -1,0 +1,41 @@
+#!/bin/bash
+
+if [ $1 = 'create' ]
+then cmd="sudo docker create --name db -p 3306:3306 -v /dev-data:/var/lib/mysql  --env-file ./secrets.env mariadb"
+
+elif [ $1 = 'start' ]
+then cmd="sudo docker start db"
+
+elif [ $1 = 'status' ]
+then cmd="sudo docker ps -f name=db"
+
+elif [ $1 = 'stop' ]
+then cmd="sudo docker stop db"
+
+elif [ $1 = 'delete' ]
+then cmd="sudo docker rm db"
+
+elif [ $1 = 'delete-data' ]
+then cmd="sudo rm -rf /dev-data"
+
+elif [ $1 = 'help' ]
+then
+  echo Commands:
+  echo create: create a database for development or testing
+  echo start: start the database
+  echo status: check if the database is running
+  echo create: stop the database
+  echo delete: delete database without deleting data
+  echo delete-data: delete database data
+  exit
+  
+else
+  echo Command \"$1\" not found.
+  exit
+fi
+
+echo Running command \"$1\".
+echo "$" $cmd
+eval $cmd
+
+

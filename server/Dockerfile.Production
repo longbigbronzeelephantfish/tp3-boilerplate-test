@@ -1,0 +1,29 @@
+# Stage 1: Build project
+
+FROM microsoft/aspnetcore-build AS builder
+
+WORKDIR /source
+
+COPY ./run /source/
+
+COPY ./server/*.csproj /source/server/
+
+RUN dotnet restore ./server
+
+COPY ./server /source/server
+
+RUN sh run publish
+
+# Stage 2: Run
+
+FROM microsoft/aspnetcore
+
+WORKDIR /app
+
+COPY --from=builder /source/server/app /app
+
+ENV ASPNETCORE_ENVIRONMENT=Production
+
+EXPOSE 5000
+
+ENTRYPOINT ["dotnet", "Server.dll"]

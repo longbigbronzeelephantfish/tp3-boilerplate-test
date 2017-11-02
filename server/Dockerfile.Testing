@@ -1,0 +1,17 @@
+FROM microsoft/aspnetcore-build
+
+WORKDIR /source
+
+COPY ./server/*.csproj /source/server/
+
+RUN dotnet restore ./server
+
+COPY ./server.tests/*.csproj /source/server.tests/
+
+RUN dotnet restore ./server.tests
+
+COPY . /source
+
+RUN ls /source/server
+
+ENTRYPOINT ["sh", "run", "test"]

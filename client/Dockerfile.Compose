@@ -1,0 +1,15 @@
+FROM node AS builder
+
+WORKDIR /source
+
+COPY package.json /source
+
+COPY yarn.lock /source
+
+RUN yarn install
+
+COPY . /source
+
+RUN yarn run publish
+
+RUN mv /source/dist /app

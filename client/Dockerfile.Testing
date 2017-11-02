@@ -1,0 +1,13 @@
+FROM node
+
+WORKDIR /source
+
+COPY package.json /source
+
+COPY yarn.lock /source
+
+RUN yarn install
+
+COPY . /source
+
+ENTRYPOINT [ "yarn", "run", "test" ]

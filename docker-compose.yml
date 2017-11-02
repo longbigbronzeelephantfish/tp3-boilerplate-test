@@ -1,0 +1,42 @@
+version: '3.3'
+
+services:
+  mariadb:
+    image: mariadb
+    env_file:
+      - ./mariadb/secrets.env
+    expose:
+      - 3306
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile.Production
+    links:
+      - mariadb
+    depends_on:
+      - mariadb
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile.Compose
+    links:
+      - server
+    depends_on:
+      - server
+    volumes:
+      - shared:/app
+  nginx:
+    build: ./nginx
+    links:
+      - server
+    depends_on:
+      - server
+      - client
+    volumes:
+      - shared:/app
+    ports:
+      - 80:80
+
+  
+volumes:
+  shared:

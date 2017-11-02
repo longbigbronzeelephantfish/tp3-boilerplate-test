@@ -1,0 +1,27 @@
+#!/bin/bash
+
+if [ $1 = 'docker-clean' ]
+then cmd="sudo docker container prune -f && sudo docker image prune -f"
+
+elif [ $1 = 'gen-secrets' ]
+then cmd="./gen-secrets"
+
+elif [ $1 = 'install' ]
+then cmd="cd server && sh run install && cd ../client && yarn install"
+
+elif [ $1 = 'help' ]
+then
+  echo Commands:
+  echo docker-clean: clean the unused docker containers and images
+  echo gen-secrets: generate development or production secrets
+  echo install: initialise the project
+  exit
+
+else
+  echo Command \"$1\" not found.
+  exit
+fi
+
+echo Running command \"$1\".
+echo "$" $cmd
+eval $cmd

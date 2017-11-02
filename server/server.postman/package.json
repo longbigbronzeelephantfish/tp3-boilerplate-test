@@ -1,0 +1,11 @@
+{
+  "name": "server.postman",
+  "version": "1.0.0",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "newman": "^3.8.3"
+  },
+  "scripts":{
+    "test": "newman run api_test.json"
+  }
+}

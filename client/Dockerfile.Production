@@ -1,0 +1,23 @@
+# Stage 1: Build project
+
+FROM node AS builder
+
+WORKDIR /source
+
+COPY package.json /source
+
+COPY yarn.lock /source
+
+RUN yarn install
+
+COPY . /source
+
+RUN yarn run publish
+
+# Stage 2: Run
+
+FROM nginx
+
+COPY --from=builder /source/dist /usr/share/nginx/html
+
+EXPOSE 80
