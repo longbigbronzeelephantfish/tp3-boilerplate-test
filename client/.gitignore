@@ -2,3 +2,4 @@
 node_modules
 docs
 secrets.json
+yarn-error.log
