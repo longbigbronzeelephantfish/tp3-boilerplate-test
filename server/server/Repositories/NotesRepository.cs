@@ -1,11 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Server.Data;
 using Server.Models;
-using Server.Repository.Interfaces;
+using Server.Respositories.Interfaces;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Server.Repository
+namespace Server.Respositories
 {
     /// <summary>
     /// Class responsible for Notes business logic

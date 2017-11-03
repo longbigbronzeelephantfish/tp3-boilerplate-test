@@ -10,8 +10,8 @@ using Server.Seed;
 using Server.Middleware;
 using Swashbuckle.AspNetCore.Swagger;
 using Microsoft.Extensions.PlatformAbstractions;
-using Server.Repository;
-using Server.Repository.Interfaces;
+using Server.Respositories;
+using Server.Respositories.Interfaces;
 
 namespace Server
 {

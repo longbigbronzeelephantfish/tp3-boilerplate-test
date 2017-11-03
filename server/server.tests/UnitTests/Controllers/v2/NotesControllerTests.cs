@@ -3,7 +3,7 @@ using Moq;
 using Newtonsoft.Json.Linq;
 using Server.Controllers.v2;
 using Server.Models;
-using Server.Repository.Interfaces;
+using Server.Respositories.Interfaces;
 using Xunit;
 
 namespace Server.Tests.UnitTests.Controllers.v2

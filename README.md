@@ -166,6 +166,16 @@ Open your web browser and navigate to 192.168.88.88:8080
 
 You should be able to see the application.
 
+## Development
+
+There are 3 servers that are used for development. Instructions on how to use each server is in each folder's README.md.
+
+``` sh
+├── mariadb         # Database server
+├── server          # Backend server
+└── client          # Frontend server
+```
+
 # Folder Structure
 
 ``` sh
@@ -264,7 +274,7 @@ Secrets can be overwritten by setting an environment variable:
 ``` sh
 $DATABASE_SECRET    # Base64 encoded string of the database password
 $DATABASE_HOST      # Database host
-$SERVER_HOST         # Backend server host
+$SERVER_HOST        # Backend server host
 ```
 
 # Production
@@ -291,6 +301,24 @@ Delete the production database data:
 
 ``` sh
 sh run compose-delete-data
+```
+
+# Docker
+
+All projects are run in Docker for production.
+
+You can test each project in the production Docker environment.
+
+You can also run the tests for each project in the Docker environment.
+
+For more information, read the README.md or run the help utlity in each project's folder.
+
+``` sh
+# server
+sh run help
+
+# client
+yarn script
 ```
 
 # Commands

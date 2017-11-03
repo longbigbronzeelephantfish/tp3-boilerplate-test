@@ -1,3 +1,32 @@
+# Typical Workflow
+
+1) Ensure that database server is running.
+2) Work on project in Visual Studio 2017.
+3) Run unit tests and integration tests.
+4) Commit and push to repository.
+
+# Development
+
+Resources
+- ASP.NET Core Documentation https://docs.microsoft.com/en-us/aspnet/core/
+- ASP.NET Core REST API
+https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-web-api
+- Entity Framework Core Documentation https://docs.microsoft.com/en-us/ef/core/
+
+# Testing
+
+Resources
+- xUnit Unit Testing https://docs.microsoft.com/en-us/dotnet/core/testing/unit-testing-with-dotnet-test
+- ASP.NET Core Testing https://docs.microsoft.com/en-us/aspnet/core/testing/
+- Moq Mocking Tutorial https://github.com/Moq/moq4/wiki/Quickstart
+- Postman Documentation https://www.getpostman.com/docs/
+
+# Documentation
+
+Resources
+- C# XML Documentation Comments https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/xmldoc/xml-documentation-comments
+- Swagger https://docs.microsoft.com/en-us/aspnet/core/tutorials/web-api-help-pages-using-swagger
+
 # Projects
 
 ## server
@@ -20,14 +49,14 @@ sh run test
 
 Contains the Postman integration tests. Run using Node Package Manager.
 
-```
+``` sh
 └── server.postman
     ├── package.json
     ├── yarn.lock
     └── api_test.json   # Postman Collection
 ```
 
-Before running the REST API integration tests, ensure that the database server and ASP.NET server is running. After that, run the tests using:
+Before running the REST API integration tests, ensure that the database server and ASP.NET server is running. After that, run the tests using Postman or:
 
 ```
 sh run postman-test

@@ -3,9 +3,9 @@ using Microsoft.AspNetCore.Mvc;
 using Server.Models;
 using Server.Data;
 using Microsoft.EntityFrameworkCore;
-using Server.Repository;
+using Server.Respositories;
 using System;
-using Server.Repository.Interfaces;
+using Server.Respositories.Interfaces;
 
 namespace Server.Controllers.v2
 {

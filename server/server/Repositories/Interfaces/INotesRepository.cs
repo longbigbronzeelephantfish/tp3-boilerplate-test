@@ -1,7 +1,7 @@
 ﻿using Server.Models;
 using System.Collections.Generic;
 
-namespace Server.Repository.Interfaces
+namespace Server.Respositories.Interfaces
 {
     /// <summary>
     /// Repository to manage all the Notes and TodoItems
