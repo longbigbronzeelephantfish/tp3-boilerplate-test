@@ -3,27 +3,26 @@ stages:
 - deploy
 
 variables:
-  DATABASE_SECRET: "aGVsbG8K"
+  DATABASE_SECRET: "aa=="
   DATABASE_HOST: "127.0.0.1"
   SERVER_HOST: "127.0.0.1:5000"
 
 server-tests:
   stage: test
   script:
-  - sh run gen-secrets dev
   - cd server
   - sh run docker-test
 
 client-tests:
   stage: test
   script:
-  - sh run gen-secrets dev
   - cd client
   - sh run docker-test
 
 deploy:
   stage: deploy
   script:
+  - sh run gen-secrets prod
   - sh run compose-down
   - sh run gen-secrets prod
   - sh run compose-up
