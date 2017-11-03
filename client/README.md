@@ -156,6 +156,7 @@ Module bundler and build tool.
 ├── jsdoc.conf                  # JSDoc configuration file
 ├── package.json                # NPM configuration file
 ├── README.md                   # This file
+├── run                         # Utility script to run docker commands
 ├── secrets.json                # Generated secrets file
 ├── secrets.json.sample         # Template secrets file. Do not edit
 ├── tests.setup                 # Jest/Enzyme setup file
@@ -203,16 +204,19 @@ yarn run publish
 ```
 
 Run the Jest and Enzyme tests in Docker:
-```
-yarn run docker-tests
+``` sh
+sh run docker-tests
+yarn run docker-tests   # This command will run "sh run docker-tests"
 ```
 
 Build the project for production and run it in Docker:
-```
-yarn run docker-publish
+``` sh
+sh run docker-publish
+yarn run docker-publish # This command will run "sh run docker-publish"
 ```
 
 Stop the production Docker server:
-```
-yarn run docker-stop
+``` sh
+sh run docker-stop
+yarn run docker-stop    # This command will run "sh run docker-stop"
 ```

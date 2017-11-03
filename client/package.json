@@ -61,8 +61,8 @@
     "test": "jest",
     "doc": "jsdoc -c jsdoc.conf.json -r -d ./docs ./src",
     "publish": "webpack -p --config webpack.prod.js",
-    "docker-test": "docker build -t client-test -f ./Dockerfile.Testing . && docker run --name client-test -t client-test && docker rm client-test",
-    "docker-publish": "docker build -t client -f ./Dockerfile.Production . && docker run -d --name client -p 80:80 -t client",
-    "docker-stop": "docker stop client && docker rm client"
+    "docker-test": "sh run docker-test",
+    "docker-publish": "sh run docker-publish",
+    "docker-stop": "sh run docker-stop"
   }
 }

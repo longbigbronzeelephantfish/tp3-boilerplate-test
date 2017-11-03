@@ -1,0 +1,27 @@
+#!/bin/bash
+
+if [ $1 = 'docker-test' ]
+then cmd="docker build -t client-test -f ./Dockerfile.Testing . && docker run --name client-test -t client-test && docker rm client-test"
+
+elif [ $1 = 'docker-publish' ]
+then cmd="docker build -t client -f ./Dockerfile.Production . && docker run -d --name client -p 80:80 -t client"
+
+elif [ $1 = 'docker-stop' ]
+then cmd="docker stop client && docker rm client"
+
+elif [ $1 = 'help' ]
+then
+  echo Commands:
+  echo docker-test: run tests in docker
+  echo docker-publish: run production server in docker
+  echo docker-stop: stop docker production server
+  exit
+
+else
+  echo Command \"$1\" not found.
+  exit
+fi
+
+echo Running command \"$1\".
+echo "$" $cmd
+eval $cmd
