@@ -1,5 +1,6 @@
 before_script:
 - ls -la
+- pwd
 
 variables:
   DATABASE_SECRET: "aGVsbG8K"
@@ -18,4 +19,4 @@ client-unit-test:
   script:
   - sh run gen-secrets prod
   - cd client
-  - yarn run docker-test
+  - sh run docker-test
