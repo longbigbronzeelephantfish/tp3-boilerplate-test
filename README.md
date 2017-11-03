@@ -185,6 +185,7 @@ There are 3 servers that are used for development. Instructions on how to use ea
 ├── mariadb                     # Folder containing database config for development use
 ├── nginx                       # Folder containing Nginx config for production use
 ├── server                      # Folder containing server source code and tests
+├── .gitattributes              # Git configuration file to control line endings
 ├── .gitignore                  # Git ignores all files and folders in this file
 ├── .gitlab-ci.yml              # GitLab Continuous Integration configuration file
 ├── compose                     # Utlity script to run production servers in Docker
