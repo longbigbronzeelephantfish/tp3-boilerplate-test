@@ -9,7 +9,7 @@ import Routes from './Routes';
 const View = props => (
   <BrowserRouter>
     <div>
-      <Modal open={props.error} >
+      <Modal open={props.error != ""} >
         <Modal.Header icon="warning circle">{props.error}</Modal.Header>
         <Modal.Content>
           <Modal.Description>
