@@ -1,6 +1,6 @@
-before_script:
-- ls -la
-- pwd
+stages:
+- test
+- deploy
 
 variables:
   DATABASE_SECRET: "aGVsbG8K"
@@ -10,13 +10,21 @@ variables:
 server-tests:
   stage: test
   script:
-  - sh run gen-secrets prod
+  - sh run gen-secrets dev
   - cd server
   - sh run docker-test
 
 client-tests:
   stage: test
   script:
-  - sh run gen-secrets prod
+  - sh run gen-secrets dev
   - cd client
   - sh run docker-test
+
+deploy:
+  stage: deploy
+  script:
+  - sh run compose-down
+  - sh run gen-secrets prod
+  - sh run compose-up
+  when: manual
