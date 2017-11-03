@@ -1,33 +1,14 @@
 stages:
 - test
-- deploy
-
-variables:
-  DATABASE_SECRET: "aa=="
-  DATABASE_HOST: "mariadb"
-  SERVER_HOST: "127.0.0.1:5000"
 
 server-tests:
   stage: test
   script:
   - cd server
   - sh run docker-test
-  environment:
-    name: testing
 
 client-tests:
   stage: test
   script:
   - cd client
   - sh run docker-test
-  environment:
-    name: testing
-
-deploy:
-  stage: deploy
-  script:
-  - sh run gen-secrets prod
-  - sh run compose-up
-  when: manual
-  environment:
-    name: production
