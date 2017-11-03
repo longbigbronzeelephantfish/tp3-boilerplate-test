@@ -25,7 +25,7 @@ server-postman-tests:
   stage: test
   script:
   - sh run gen-secrets prod
-  - docker create --name $CI_COMMIT_SHA --env-file ./secrets.env mariadb
+  - docker run --name $CI_COMMIT_SHA --env-file ./mariadb/secrets.env mariadb
   - cd server
   - sh run postman-test
   - docker stop $CI_COMMIT_SHA
