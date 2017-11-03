@@ -23,4 +23,4 @@ test:
   - cd server
   - sh run docker-test
   - cd ../client
-  - sh run docker-test
+  - yarn run docker-test
