@@ -1,26 +1,21 @@
-image: docker:latest
-
-# When using dind, it's wise to use the overlayfs driver for
-# improved performance.
-variables:
-  DOCKER_DRIVER: overlay2
-
-services:
-- docker:dind
-
 before_script:
-- docker info
+- ls -la
 
 variables:
   DATABASE_SECRET: "aGVsbG8K"
   DATABASE_HOST: "127.0.0.1"
   SERVER_HOST: "127.0.0.1:5000"
 
-test:
+server-unit-test:
   stage: test
   script:
   - sh run gen-secrets prod
   - cd server
   - sh run docker-test
-  - cd ../client
+
+client-unit-test:
+  stage: test
+  script:
+  - sh run gen-secrets prod
+  - cd client
   - yarn run docker-test
