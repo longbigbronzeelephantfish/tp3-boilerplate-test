@@ -7,7 +7,7 @@ variables:
   DATABASE_HOST: "127.0.0.1"
   SERVER_HOST: "127.0.0.1:5000"
 
-server-unit-tests:
+server-tests:
   stage: test
   script:
   - sh run gen-secrets prod
@@ -20,13 +20,3 @@ client-tests:
   - sh run gen-secrets prod
   - cd client
   - sh run docker-test
-
-server-postman-tests:
-  stage: test
-  script:
-  - sh run gen-secrets prod
-  - docker run -d --name $CI_COMMIT_SHA --env-file ./mariadb/secrets.env mariadb
-  - cd server
-  - sh run postman-test
-  - docker stop $CI_COMMIT_SHA
-  - docker rm $CI_COMMIT_SHA
